@@ -6,7 +6,7 @@ export const Result = ({title, totalResult}: any) => {
             <p>/ person</p>
         </div>
         <div className='result--price'>
-            <p>{totalResult}</p>
+            <p>${totalResult}</p>
         </div>
     </div>
   )

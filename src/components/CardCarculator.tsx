@@ -2,60 +2,66 @@ import { InputGroup } from "./helpers/InputGroup";
 import { Button } from "./helpers/Button";
 import { InputCustom } from "./helpers/InputCustom";
 import { useEffect, useState } from "react";
+import { Result } from "./helpers/Result";
 
 export const CardCarculator = () => {
-  const [bill, setBill] = useState<number>(0);
-  const [custom, setCustom] = useState<number>(0);
-  const [numberPeople, setNumberPeople] = useState<number>(0);
-  const [total, setTotal] = useState<number>();
+  const [bill, setBill] = useState<number | undefined>(undefined);
+  const [custom, setCustom] = useState<number | undefined>(undefined);
+  const [numberPeople, setNumberPeople] = useState<number | undefined>(undefined);
 
-  useEffect(() => {
-    console.log(total);
   
-  }, [total])
+  const [total, setTotal] = useState<number>(0);
+  const [tipAmount, setTipAmount] = useState<number>(0);
   
   const handleCustomChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    if ( isNaN(Number(newValue)) ){
-      setCustom(0);
-    }
-
-    if(Number(newValue) >= 0 && Number(newValue) <= 100){
-      setCustom(Number(newValue));
-    }
+    const inputValue = event.target.value;
+    const inputNumberValue = parseFloat(event.target.value);
+    const newValue = inputValue !== '' && !isNaN(inputNumberValue) ? inputNumberValue : undefined;
+    setCustom(newValue);
   };
 
   const handleBillChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    if ( isNaN(Number(newValue)) ) {
-      setBill(0);
-    }
+    const inputNumberValue = parseFloat(event.target.value);
+    const inputValue = event.target.value;
+    const newValue = (inputValue !== '') && (inputNumberValue > 0)  ? inputNumberValue : undefined;
 
-    if(Number(newValue) >= 0){
-      setBill(Number(newValue));
-    }
+    setBill(newValue);
+    console.log(bill)
+
   };
 
   const handleNumberOfPeopleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = event.target.value;
-    if ( isNaN(Number(newValue)) ) {
-      setNumberPeople(0);
-    }
+    const inputNumberValue = parseInt(event.target.value);
+    const inputValue = event.target.value;
+    const newValue = (inputValue !== '') && (inputNumberValue > 0)  ? inputNumberValue : undefined;
 
-    if( Number(newValue) >= 0 ){
-      setNumberPeople(Number(newValue));
-    } 
+    setNumberPeople(newValue);
   };
 
   const onCalculateTotal = (percentage: number) => {
-    setTotal(() => (bill * percentage));
+    if(bill !== undefined && numberPeople !== undefined)
+      if(bill != 0 && numberPeople != 0){
+        console.log("inside onCalculateTotal")
+
+        setTotal(() => Number((( (bill * percentage) + bill ) / numberPeople).toFixed(2)) );
+        setTipAmount(() => Number(((bill * percentage) / numberPeople).toFixed(2)) );
+      }
   }
 
-  const onCalculateCustomTotal = (percentage: number) => {
-    setTotal(() => (bill * (percentage / 100)));
-  }
+  useEffect(() => {
+    if(bill !== undefined && numberPeople !== undefined && custom !== undefined)
+      if(bill != 0 && numberPeople != 0){
+        console.log("inside onCalculateTotal")
+
+        setTotal(() => Number((( (bill * (custom / 100)) + bill ) / numberPeople).toFixed(2)));
+        setTipAmount(() => Number(((bill * (custom / 100)) / numberPeople).toFixed(2)));
+      }
+  }, [custom, bill, numberPeople])
+  
   return (
+    <div className="card">
     <div className="card--caculator">
+
       <InputGroup 
         title="Bill" 
         style="bill" 
@@ -78,7 +84,7 @@ export const CardCarculator = () => {
             name={'custom'}
             value={custom}
             onChange={handleCustomChange} 
-            onClick={() => onCalculateCustomTotal(custom)} />
+         />
         </div>
       </div>
 
@@ -90,6 +96,19 @@ export const CardCarculator = () => {
         name={'numberPeople'}
         onChange={handleNumberOfPeopleChange}
       />
+    </div>
+
+    <div className='card--result'>
+        <div className='card--result--header'>
+            <Result title={'Tip Amount'} totalResult={tipAmount}/>
+
+            <Result title={'Total'} totalResult={total} />
+        </div>
+
+        <div className='card--result--footer'>
+            <Button title={'Reset'} />
+        </div>
+    </div>
     </div>
   );
 };

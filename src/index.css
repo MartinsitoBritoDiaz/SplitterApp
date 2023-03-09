@@ -58,12 +58,16 @@ input[type='number']{
 }
 
 .App{
+  display: flex;
+  row-gap: 3rem;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 3rem;
 }
 
 .header{
   display: flex;
   justify-content: center;
-  padding: 3rem 0rem;
 }
 
 .card{
@@ -134,7 +138,7 @@ input[type='number']{
 button{
   border: none;
   border-radius: .3rem;
-  padding: .5rem 0rem;
+  padding: .5rem 2rem;
   
   color: white;
   cursor: pointer;
@@ -223,6 +227,61 @@ button:nth-child(6){
   background-color: var(--Very-light-grayish-cyan);
 }
 
-@media (min-width: 1280px) {
-     
+@media (min-width: 720px) {
+
+  .tip--input,
+  button{
+  width: 110px;
+
+  }
+
+  
+  .App{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0rem;
+  }
+
+  .card{
+    flex-direction: row;
+    row-gap: 1.5rem;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+  }
+
+  .card--caculator{
+    padding-bottom: 2rem;
+    flex: 1;
+  }
+
+  .button-group{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .card--result{
+    flex: 1;
+  }
+
+  .card--result{
+    background-color: var(--Very-dark-cyan);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    row-gap: 1.5rem;
+    padding: 3rem;
+    border-radius: 1rem;
+    row-gap: 7rem;
+  }
+  
+  .main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

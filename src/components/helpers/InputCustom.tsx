@@ -1,5 +1,5 @@
-export const InputCustom = ({title, value, onChange, onClick}: any) => {
+export const InputCustom = ({title, value, onChange}: any) => {
   return (
-    <input className="tip--input" min={0} max={100} placeholder="Custom" onClick={onClick} value={value} onChange={onChange} name={title}/>
+    <input inputMode="decimal"  pattern="[0-9]*" className="tip--input" min={0} max={100} placeholder="Custom" value={value ?? ''} onChange={onChange} name={title}/>
   )
 }

@@ -2,13 +2,13 @@ import React from 'react'
 import { Result } from './helpers/Result'
 import { Button } from './helpers/Button'
 
-export const CardResult = () => {
+export const CardResult = ({total, tipAmount}: any) => {
   return (
     <div className='card--result'>
         <div className='card--result--header'>
-            <Result title={'Tip Amount'} totalResult={'$4.27'}/>
+            <Result title={'Tip Amount'} totalResult={tipAmount}/>
 
-            <Result title={'Total'} totalResult={'$32.79'} />
+            <Result title={'Total'} totalResult={total} />
         </div>
 
         <div className='card--result--footer'>
