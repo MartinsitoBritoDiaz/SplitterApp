@@ -82,7 +82,7 @@ input[type='number']{
   display: flex;
   flex-direction: column;
   row-gap: 1.5rem;
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
 }
 
 .card--caculator{
@@ -185,11 +185,30 @@ button:hover{
   color: var(--Very-dark-cyan);
 }
 
-.button__Active{
+.button5__Active{
   background-color: var(--Strong-cyan);
   color: var(--Very-dark-cyan);
 }
 
+.button10__Active{
+  background-color: var(--Strong-cyan);
+  color: var(--Very-dark-cyan);
+}
+
+.button15__Active{
+  background-color: var(--Strong-cyan);
+  color: var(--Very-dark-cyan);
+}
+
+.button25__Active{
+  background-color: var(--Strong-cyan);
+  color: var(--Very-dark-cyan);
+}
+
+.button50__Active{
+  background-color: var(--Strong-cyan);
+  color: var(--Very-dark-cyan);
+}
 
 button:nth-child(6){
   background-color: var(--Very-light-grayish-cyan);
@@ -242,6 +261,25 @@ button:nth-child(6){
 
 .card--result--footer button:hover{
   background-color: var(--Light-grayish-cyan);
+}
+
+.error{
+  display: none;
+  color: var(--orange);
+}
+
+.error__input input{
+  border: 2px solid var(--orange);
+}
+
+.active{
+  display: block;
+}
+
+.input--group--header{
+  display: flex;
+  justify-content: space-between;
+  
 }
 
 @media (min-width: 720px) {
@@ -331,24 +369,7 @@ button:nth-child(6){
     padding-top: 8px;
   }
   
-  .input--group--header{
-    display: flex;
-    justify-content: space-between;
-    
-  }
 
-  .error{
-    display: none;
-    color: var(--orange);
-  }
-
-  .error__input input{
-    border: 2px solid var(--orange);
-  }
-
-  .active{
-    display: block;
-  }
 
   .main{
     display: flex;
