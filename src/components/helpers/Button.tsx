@@ -1,5 +1,5 @@
-export const Button = ({title, onClick}: any) => {
+export const Button = ({title, onClick, style}: any) => {
   return (
-    <button onClick={onClick}>{title}</button>
+    <button className={style} name={title} onClick={onClick}>{title}</button>
   )
 }

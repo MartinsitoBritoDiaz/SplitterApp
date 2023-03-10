@@ -7,6 +7,8 @@
   --White: hsl(0, 0%, 100%);
   --Strong-cyan: hsl(172, 67%, 45%);
 
+  --orange:   #f7794e ;
+
   background-color: var(--Light-grayish-cyan);
 
   font-family: 'Space Mono', Helvetica, Arial, sans-serif;
@@ -39,6 +41,8 @@ body{
 
 input {
   outline: none;
+  border-radius: 0.3rem;
+  caret-color: var(--Grayish-cyan);
 }
 
 h3,
@@ -98,18 +102,26 @@ input[type='number']{
 .input input{
   width: 100%;
   padding: 5px 15px;
-  border: none;
+  border: 2px solid transparent;
   text-align: right;
   color: var(--Very-dark-cyan);
   font-size: 24px;
   font-weight: bold;
   font-family: 'Space Mono', Helvetica, Arial, sans-serif;
   padding-left: 40px;
+  cursor: pointer;
 }
 
-.input input:active{
-  border: none;
+.input input:focus, input:hover{
+  border: 2px solid var(--Strong-cyan);
 }
+
+.tip--input:focus{
+  border: 2px solid var(--Strong-cyan);
+}
+/* .input input:active{
+  border: none;
+} */
 
 .bill input{
   background: url('./assets/icon-dollar.svg') no-repeat;
@@ -151,14 +163,13 @@ button{
 .tip--input{
   width: 148px;
   border-radius: .3rem;
-  padding: 0px;
-  border: none;
-  text-align: center;
-  padding: 0px;
+  text-align: right;
   font-size: 20px; 
   font-family: 'Space Mono', Helvetica, Arial, sans-serif;
   background-color: var(--Very-light-grayish-cyan);
   
+  padding-right: 10px;
+  border: 2px solid transparent;
   color: var(--Very-dark-cyan);
   font-size: 24px;
   font-weight: bold;
@@ -170,9 +181,15 @@ button{
 }
 
 button:hover{
+  background-color: var(--Light-grayish-cyan);
+  color: var(--Very-dark-cyan);
+}
+
+.button__Active{
   background-color: var(--Strong-cyan);
   color: var(--Very-dark-cyan);
 }
+
 
 button:nth-child(6){
   background-color: var(--Very-light-grayish-cyan);
@@ -224,17 +241,20 @@ button:nth-child(6){
 }
 
 .card--result--footer button:hover{
-  background-color: var(--Very-light-grayish-cyan);
+  background-color: var(--Light-grayish-cyan);
 }
 
 @media (min-width: 720px) {
 
-  .tip--input,
   button{
-  width: 110px;
-
+    width: 105px;
+    padding: 2px 0px;
   }
 
+  
+  .tip--input{
+    width: 105px;
+  }
   
   .App{
     height: 90vh;
@@ -246,15 +266,17 @@ button:nth-child(6){
 
   .card{
     flex-direction: row;
-    row-gap: 1.5rem;
-    padding: 1rem;
+    column-gap: 2rem;
+    padding: 1.5rem;
     justify-content: center;
     align-items: center;
-    border-radius: 2rem;
+    border-radius: 1rem;
   }
 
   .card--caculator{
-    padding-bottom: 2rem;
+    padding: 0px;
+    padding-bottom: 10px;
+    row-gap: 2rem;
     flex: 1;
   }
 
@@ -272,16 +294,66 @@ button:nth-child(6){
     background-color: var(--Very-dark-cyan);
     display: flex;
     flex-direction: column;
-    width: 400px;
-    row-gap: 1.5rem;
-    padding: 3rem;
-    border-radius: 1rem;
+    row-gap: 2rem;
+    justify-content: space-between;
+    height: 350px;
+    min-width: 350px;
+    padding: 2rem;
+    border-radius: .8rem;
+    margin: 0px;
     row-gap: 7rem;
   }
+
+  .card--result--header{
+    row-gap: 2rem;
+    justify-content: center;
+  }
+  .card--result--footer button{
+    padding: 3px;
+  }
+
+  .result{
+    column-gap: 2rem;
+  }
   
+  .result--description h3{
+    font-size: 15px;
+    color: var(--Very-light-grayish-cyan);
+  }
+  
+  .result--description p{
+    font-size: 12px;
+  }
+  
+  .result--price{
+    font-size: 38px;
+    color: var(--Strong-cyan);
+    padding-top: 8px;
+  }
+  
+  .input--group--header{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .error{
+    display: none;
+    color: var(--orange);
+  }
+
+  .error__input input{
+    border: 2px solid var(--orange);
+  }
+
+  .active{
+    display: block;
+  }
+
   .main{
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
 }
