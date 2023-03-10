@@ -11,7 +11,7 @@ function SplitterApp() {
         <CardCarculator />
       </div>
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

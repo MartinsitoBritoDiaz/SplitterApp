@@ -86,6 +86,7 @@ export const CardCarculator = () => {
       custom !== undefined
     )
       if (bill != 0 && numberPeople != 0) {
+        resetButtonsStyle();
         setTotal(() =>
           Number(((bill * (custom / 100) + bill) / numberPeople).toFixed(2))
         );
@@ -106,6 +107,8 @@ export const CardCarculator = () => {
   };
 
   const setButtonStyle = (percentage: number) => {
+    setCustom(undefined);
+    
     switch (percentage) {
       case 0.05:
         setButtons({
@@ -240,7 +243,6 @@ export const CardCarculator = () => {
           </div>
         </div>
       </div>
-
 
       <CardResult total={total} tipAmount={tipAmount} resetCalculator={resetCalculator} />
     </div>

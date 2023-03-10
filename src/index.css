@@ -369,12 +369,36 @@ button:nth-child(6){
     padding-top: 8px;
   }
   
-
-
   .main{
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
+}
+
+/* Footer */
+
+.footer{
+  color: hsl(218, 23%, 16%);
+  font-size: 1rem;
+  padding: 2rem 0rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.footer a{
+  color: var(--Dark-grayish-cyan);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: var(--Light-gray);
+}
+
+.footer a:visited{
+  color: var(--Grayish-cyan);
+  font-weight: 700;
+  text-decoration: none;
 }
