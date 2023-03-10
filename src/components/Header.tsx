@@ -1,5 +1,5 @@
 const imgLogo: any = {
-    path: 'src/assets/logo.svg',
+    path: '/assets/logo.svg',
     alt: 'Logo'
 }
 

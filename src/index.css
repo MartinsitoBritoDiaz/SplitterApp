@@ -124,13 +124,13 @@ input[type='number']{
 } */
 
 .bill input{
-  background: url('./assets/icon-dollar.svg') no-repeat;
+  background: url('/assets/icon-dollar.svg') no-repeat;
   background-position: 15px 50%;
   background-color: var(--Very-light-grayish-cyan);
 }
 
 .number-of-people input{
-  background: url('./assets/icon-person.svg') no-repeat;
+  background: url('/assets/icon-person.svg') no-repeat;
   background-position: 15px 50%;
   background-color: var(--Very-light-grayish-cyan);
 }
